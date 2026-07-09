@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-2e=rb=t_dib1p4qu(j)bs2zyhinlp6fnw=_i^bq(m=n)!-10#t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["scholarshipmanagementsystem-5dii.onrender.com",
+    "localhost",
+    "127.0.0.1",
+                 ]
 
 
 # Application definition
