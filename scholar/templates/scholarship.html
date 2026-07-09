@@ -1,0 +1,266 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Scholarship</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+{% comment %} <!-- SIDEBAR -->
+<div class="sidebar">
+
+    <div class="logo">
+        SCHOLARSHIP MANAGEMENT S/Y
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="{% url 'dashboard' %}" style="color: aliceblue;">
+            <i class="fa-solid fa-table-columns"></i>
+            Dashboard
+            </a>
+        </li>
+        <li>
+            <i class="fa-solid fa-award"></i>
+            <a href="{% url 'add_scholarship' %}" style="color: aliceblue;">
+            Scheme
+        </a>
+        </li>
+
+        <li>
+            <i class="fa-solid fa-file-lines"></i>
+            <a href="{% url 'my_applications' %}" style="color: aliceblue;">My Applications</a>
+        </li>
+
+        <li>
+            <i class="fa-solid fa-wallet"></i>
+            Waiting For Disbursement
+        </li>
+
+        <li>
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            Disbursed Scholarships
+        </li>
+
+        <li>
+            <i class="fa-solid fa-chart-line"></i>
+            Report
+        </li>
+
+        <li>
+            <i class="fa-solid fa-file"></i>
+            Pages
+        </li>
+
+        <li>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Search Scholarship
+        </li>
+        <li>
+            <a href="{% url 'reg_users' %}" style="color: aliceblue;">
+            <i class="fa-solid fa-users"></i>
+            Reg Users
+        </a>
+        </li>
+
+        {% if user.is_staff %}
+        <li>
+            <i class="fa-solid fa-chart-line"></i>
+            <a href="{% url 'report' %}" style="color: aliceblue;">Report</a>
+        </li>
+        {% endif %}
+        
+        <li>
+            <i class="fa-solid fa-user"></i>
+            Profile
+        </li>
+
+        <li>
+            <i class="fa-solid fa-gear"></i>
+            Setting
+        </li>
+
+        <li>
+            <a href="{% url 'logout' %}" style="color: aliceblue;">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+        </li>
+
+    </ul>
+
+</div> {% endcomment %}
+<div class="sidebar">
+
+    <!-- Logo -->
+    <div class="logo">
+        SCHOLARSHIP MANAGEMENT S/Y
+    </div>
+
+    <!-- Menu -->
+    <ul>
+
+        <li class="active-menu">
+            <a href="{% url 'dashboard' %}">
+                <i class="fa-solid fa-table-columns"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'add_scholarship' %}">
+                <i class="fa-solid fa-award"></i>
+                Scheme
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'my_applications' %}">
+                <i class="fa-solid fa-file-lines"></i>
+                Application
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'applications_admin' %}?status=WAITING_DISBURSEMENT">
+                <i class="fa-solid fa-wallet"></i>
+                Waiting For Disbursement
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'applications_admin' %}?status=DISBURSED">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                Disbursed Scholarships
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Report
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'pages' %}">
+                <i class="fa-solid fa-file"></i>
+                Pages
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'search_scholarship' %}">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                Search Scholarship
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'reg_users' %}">
+                <i class="fa-solid fa-users"></i>
+                Reg Users
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'profile' %}">
+                <i class="fa-solid fa-user"></i>
+                Profile
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'setting' %}">
+                <i class="fa-solid fa-gear"></i>
+                Setting
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'logout' %}">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+    <div class="main">
+
+    <h1 class="page-title">Search Scholarship</h1>
+
+    <div class="search-container">
+
+<form class="search-form" method="get" action="{% url 'search_scholarship' %}">
+
+            <div class="form-group">
+                <label>Scholarship Name</label>
+                <input type="text" name="search_query" placeholder="Enter Scholarship Name" value="{{ request.GET.search_query }}">
+            </div>
+
+            
+            <button class="btn-primary" type="submit">
+                Search
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="result-box">
+
+        <h2>Scholarship Results</h2>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            {% for scholarship in scholarships %}
+            <tr>
+                <td>{{ scholarship.id }}</td>
+                <td>{{ scholarship.name }}</td>
+                <td>{{ scholarship.category }}</td>
+                <td>{{ scholarship.type_of_scholarship }}</td>
+                <td><span class="status-active">Active</span></td>
+                <td>
+                    <a href="{% url 'apply_scholarship' scholarship.id %}"><button class="btn-primary">Apply</button></a>
+                    {% if user.is_staff %}
+                      <a href="{% url 'delete_scholarship' scholarship.id %}"><button class="btn-danger">Delete</button></a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+```

@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Applications</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo">
+        SCHOLARSHIP MANAGEMENT S/Y
+    </div>
+
+    <ul>
+        <li>
+            <a href="{% url 'dashboard' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-table-columns"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'applications_admin' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-file-lines"></i>
+                Applications
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'add_scholarship' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-award"></i>
+                Scheme
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'reg_users' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-users"></i>
+                Reg Users
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'logout' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <div class="main">
+        <h1 class="page-title">Manage Applications</h1>
+
+        <div class="search-container">
+            <form class="search-form" method="get">
+                <div class="form-group">
+                    <label>Status Filter</label>
+                    <select name="status">
+                        <option value="">All</option>
+                        <option value="NEW" {% if status == 'NEW' %}selected{% endif %}>New</option>
+                        <option value="APPROVED" {% if status == 'APPROVED' %}selected{% endif %}>Approved</option>
+                        <option value="REJECTED" {% if status == 'REJECTED' %}selected{% endif %}>Rejected</option>
+                        <option value="WAITING_DISBURSEMENT" {% if status == 'WAITING_DISBURSEMENT' %}selected{% endif %}>Waiting</option>
+                        <option value="DISBURSED" {% if status == 'DISBURSED' %}selected{% endif %}>Disbursed</option>
+                    </select>
+                </div>
+                <button class="btn-primary" type="submit">Filter</button>
+            </form>
+        </div>
+
+        <div class="result-box">
+            <h2>Applications</h2>
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Applicant</th>
+                    <th>Scholarship</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+
+                {% for app in applications %}
+                <tr>
+                    <td>{{ app.id }}</td>
+                    <td>{{ app.applicant.username }}</td>
+                    <td>{{ app.scholarship.name }}</td>
+                    <td>{{ app.status }}</td>
+                    <td>
+                        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                            <a href="{% url 'set_application_status' app.id 'APPROVED' %}"><button class="btn-edit">Approve</button></a>
+                            <a href="{% url 'set_application_status' app.id 'REJECTED' %}"><button class="btn-delete">Reject</button></a>
+                            <a href="{% url 'set_application_status' app.id 'WAITING_DISBURSEMENT' %}"><button class="btn-primary">Waiting</button></a>
+                            <a href="{% url 'set_application_status' app.id 'DISBURSED' %}"><button class="btn-primary">Disbursed</button></a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="5">No applications found.</td></tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

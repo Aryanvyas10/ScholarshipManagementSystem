@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Add Scheme</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+    a{
+        color: aliceblue;
+    }
+</style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+{% comment %} <div class="sidebar">
+
+    <div class="logo">
+        SCHOLARSHIP MANAGEMENT S/Y
+    </div>
+
+    <ul>
+        <li >
+            <a href="{% url 'dashboard' %}" style="color: aliceblue;">
+            <i class="fa-solid fa-table-columns"></i>
+            Dashboard
+        </a>
+        </li>
+
+        <li>
+            <a href="{% url 'add_scholarship' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-award"></i>
+                Scheme
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'my_applications' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-file-lines"></i>
+                Application
+            </a>
+        </li>
+
+        <li>
+            <i class="fa-solid fa-wallet"></i>
+            Waiting For Disbursement
+        </li>
+
+        <li>
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            Disbursed Scholarships
+        </li>
+
+        <li>
+            <i class="fa-solid fa-chart-line"></i>
+            Report
+        </li>
+
+        <li>
+            <i class="fa-solid fa-file"></i>
+            Pages
+        </li>
+
+        <li>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <a href="{% url 'search_scholarship' %}" style="color: aliceblue;">
+            Search Scholarship
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'reg_users' %}" style="color: aliceblue;">
+            <i class="fa-solid fa-users"></i>
+            Reg Users
+        </a>
+        </li>
+
+        <li>
+            <i class="fa-solid fa-user"></i>
+            Profile
+        </li>
+
+        <li>
+            <i class="fa-solid fa-gear"></i>
+            Setting
+        </li>
+
+        <li>
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </li>
+
+    </ul>
+
+</div> {% endcomment %}
+<div class="sidebar">
+
+    <!-- Logo -->
+    <div class="logo">
+        SCHOLARSHIP MANAGEMENT S/Y
+    </div>
+
+    <!-- Menu -->
+    <ul>
+
+        <li class="active-menu">
+            <a href="{% url 'dashboard' %}">
+                <i class="fa-solid fa-table-columns"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'add_scholarship' %}">
+                <i class="fa-solid fa-award"></i>
+                Scheme
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'my_applications' %}">
+                <i class="fa-solid fa-file-lines"></i>
+                Application
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'applications_admin' %}?status=WAITING_DISBURSEMENT">
+                <i class="fa-solid fa-wallet"></i>
+                Waiting For Disbursement
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'applications_admin' %}?status=DISBURSED">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                Disbursed Scholarships
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Report
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'pages' %}">
+                <i class="fa-solid fa-file"></i>
+                Pages
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'search_scholarship' %}">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                Search Scholarship
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'reg_users' %}">
+                <i class="fa-solid fa-users"></i>
+                Reg Users
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'profile' %}">
+                <i class="fa-solid fa-user"></i>
+                Profile
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'setting' %}">
+                <i class="fa-solid fa-gear"></i>
+                Setting
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'logout' %}">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+<form method="post" enctype="multipart/form-data" action="{% url 'add_scholarship' %}">
+    {% csrf_token %}
+    <div class="form-box">
+
+        <div class="form-group">
+            <label>Name Of Scheme</label>
+            <input type="text" name="name">
+        </div>
+
+        <div class="form-group">
+            <label>Type Of Scholarship</label>
+
+            <select name="type_of_scholarship">
+
+                <option>Choose Type</option>
+
+                <option>Merit Based Scholarship</option>
+
+                <option>Need Based Scholarship</option>
+
+                <option>Sports Scholarship</option>
+
+                <option>Minority Scholarship</option>
+
+                <option>SC/ST Scholarship</option>
+
+                <option>OBC Scholarship</option>
+
+                <option>Girls Education Scholarship</option>
+
+                <option>Research Scholarship</option>
+
+                <option>Disability Scholarship</option>
+
+                <option>Technical Education Scholarship</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Scholarship Grade</label>
+
+            <select name="grade">
+
+                <option>Choose Grade</option>
+
+                <option>Class 1 - 5</option>
+
+                <option>Class 6 - 8</option>
+
+                <option>Class 9 - 10</option>
+
+                <option>Class 11 - 12</option>
+
+                <option>Diploma</option>
+
+                <option>ITI</option>
+
+                <option>Undergraduate</option>
+
+                <option>Postgraduate</option>
+
+                <option>PhD</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Year Of Scholarship</label>
+            <input type="text" name="year">
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+
+            <select name="category">
+
+                <option>Select Category</option>
+
+                <option>General</option>
+
+                <option>OBC</option>
+
+                <option>SC</option>
+
+                <option>ST</option>
+
+                <option>EWS</option>
+
+                <option>Minority</option>
+
+                <option>All Categories</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Criteria</label>
+
+            <textarea name="criteria" rows="4">
+
+            </textarea>
+
+        </div>
+
+        <div class="form-group">
+            <label>Document Required</label>
+
+            <textarea name="documents" rows="4">
+
+            </textarea>
+
+        </div>
+
+        
+        <button class="btn-primary" type="submit">
+            Add Scheme
+        </button>
+     </div>
+
+     
+    <div class="result-box">
+
+        <h2>Scholarship Results</h2>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            {% for scholarship in scholarships %}
+            <tr>
+                <td>{{ scholarship.id }}</td>
+                <td>{{ scholarship.name }}</td>
+                <td>{{ scholarship.category }}</td>
+                <td>{{ scholarship.type_of_scholarship }}</td>
+                <td><span class="status-active">Active</span></td>
+                <td>
+                    <a href="{% url 'delete_scholarship' scholarship.id %}"><button class="btn-danger">Delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+</form>
+</div>
+
+</body>
+</html>

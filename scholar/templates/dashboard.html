@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+{% comment %} <div class="sidebar">
+
+    <div class="logo">
+        SCHOLARSHIP MANAGEMENT S/Y
+    </div>
+
+    <ul>
+
+        <li>
+            <i class="fa-solid fa-table-columns"></i>
+            Dashboard
+        </li>
+        <li>
+            <i class="fa-solid fa-award"></i>
+            <a href="{% url 'add_scholarship' %}" style="color: aliceblue;">
+            Scheme
+        </a>
+        </li>
+
+        <li>
+            <i class="fa-solid fa-file-lines"></i>
+            <a href="{% url 'my_applications' %}" style="color: aliceblue;">My Applications</a>
+        </li>
+
+        <li>
+            <i class="fa-solid fa-wallet"></i>
+            <a href="{% url 'applications_admin' %}?status=WAITING_DISBURSEMENT" style="color: aliceblue;">Waiting For Disbursement</a>
+        </li>
+
+        <li>
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            <a href="{% url 'applications_admin' %}?status=DISBURSED" style="color: aliceblue;">Disbursed Scholarships</a>
+        </li>
+
+        <li>
+            <i class="fa-solid fa-chart-line"></i>
+            <a href="#" style="color: aliceblue;">Report</a>
+        </li>
+
+        <li>
+            <i class="fa-solid fa-file"></i>
+            <a href="{% url 'pages' %}" style="color: aliceblue;">Pages</a>
+        </li>
+
+        <li>
+            <a href="{% url 'search_scholarship' %}" style="color: aliceblue;">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Search Scholarship
+        </a>
+        </li>
+        <li>
+            <a href="{% url 'reg_users' %}" style="color: aliceblue;">
+            <i class="fa-solid fa-users"></i>
+            Reg Users
+        </a>
+        </li>
+        
+        <li>
+            <a href="{% url 'profile' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-user"></i>
+                Profile
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'setting' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-gear"></i>
+                Setting
+            </a>
+        </li>
+
+        <li>
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </li>
+
+    </ul>
+
+</div> {% endcomment %}
+<!-- =======================
+     SIDEBAR
+======================= -->
+
+<div class="sidebar">
+
+    <!-- Logo -->
+    <div class="logo">
+        SCHOLARSHIP MANAGEMENT S/Y
+    </div>
+
+    <!-- Menu -->
+    <ul>
+
+        <li>
+<a href="{% url 'dashboard' %}">
+                <i class="fa-solid fa-table-columns"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'add_scholarship' %}">
+                <i class="fa-solid fa-award"></i>
+                Scheme
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'my_applications' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-file-lines"></i>
+                Application
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'applications_admin' %}?status=WAITING_DISBURSEMENT" style="color: aliceblue;">
+                <i class="fa-solid fa-wallet"></i>
+                Waiting For Disbursement
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'applications_admin' %}?status=DISBURSED" style="color: aliceblue;">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                Disbursed Scholarships
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'report' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-chart-line"></i>
+                Report
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'pages' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-file"></i>
+                Pages
+            </a>
+        </li>
+
+
+        <li>
+            <a href="{% url 'search_scholarship' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                Search Scholarship
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'reg_users' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-users"></i>
+                Reg Users
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'profile' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-user"></i>
+                Profile
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'setting' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-gear"></i>
+                Setting
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'logout' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+<!-- MAIN CONTENT -->
+
+<div class="main">
+
+    <div class="cards">
+
+        <div class="card">
+            <h1>{{ applications_new }}</h1>
+            <h2>New Application</h2>
+            <hr>
+            <p><a href="{% url 'applications_admin' %}?status=NEW" style="color:#fff;">View Details</a></p>
+        </div>
+
+        <div class="card">
+            <h1>{{ applications_approved }}</h1>
+            <h2>Approved Scholarship</h2>
+            <hr>
+            <p><a href="{% url 'applications_admin' %}?status=APPROVED" style="color:#fff;">View Details</a></p>
+        </div>
+
+        <div class="card">
+            <h1>{{ applications_disbursed }}</h1>
+            <h2>Disbursed Scholarship</h2>
+            <hr>
+            <p><a href="{% url 'applications_admin' %}?status=DISBURSED" style="color:#fff;">View Details</a></p>
+        </div>
+
+        <div class="card">
+            <h1>{{ applications_rejected }}</h1>
+            <h2>Rejected Scholarship</h2>
+            <hr>
+            <p><a href="{% url 'applications_admin' %}?status=REJECTED" style="color:#fff;">View Details</a></p>
+        </div>
+
+        <div class="card">
+            <h1>{{ applications_total }}</h1>
+            <h2>Total Applications</h2>
+            <hr>
+            <p><a href="{% url 'applications_admin' %}" style="color:#fff;">View Details</a></p>
+        </div>
+
+        <div class="card">
+            <h1>{{ applications_waiting }}</h1>
+            <h2>Applications Waiting For Disbursement</h2>
+            <hr>
+            <p><a href="{% url 'applications_admin' %}?status=WAITING_DISBURSEMENT" style="color:#fff;">View Details</a></p>
+        </div>
+
+        <div class="card">
+            <h1>{{ total_users }}</h1>
+            <h2>Total Users</h2>
+            <hr>
+            <p>View Details</p>
+        </div>
+
+        <div class="card">
+            <h1>{{ total_schemes }}</h1>
+            <h2>Listed Scheme</h2>
+            <hr>
+            <p>View Details</p>
+        </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:50px;">
+        Scholarship Management System
+    </div>
+
+</div>
+
+</body>
+</html>

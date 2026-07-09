@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Scholarship</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo">
+        SCHOLARSHIP MANAGEMENT S/Y
+    </div>
+
+    <ul>
+        <li>
+            <a href="{% url 'dashboard' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-table-columns"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <i class="fa-solid fa-file-lines"></i>
+            Application
+        </li>
+
+        <li>
+            <a href="{% url 'my_applications' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-file"></i>
+                My Applications
+            </a>
+        </li>
+
+        <li>
+            <i class="fa-solid fa-gear"></i>
+            Setting
+        </li>
+
+        <li>
+            <a href="{% url 'logout' %}" style="color: aliceblue;">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="main">
+    <div class="form-box" style="max-width:720px; margin:0 auto;">
+        <h1 style="margin-bottom:20px;">Apply: {{ scholarship.name }}</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Scholarship Type</label>
+                <input type="text" value="{{ scholarship.type_of_scholarship }}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>Grade</label>
+                <input type="text" value="{{ scholarship.grade }}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>Statement / Brief</label>
+                <textarea name="statement" rows="5" placeholder="Write a short statement..."></textarea>
+            </div>
+
+            <button class="btn-primary" type="submit">Submit Application</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+

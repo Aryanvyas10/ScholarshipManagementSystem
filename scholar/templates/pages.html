@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pages</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo">SCHOLARSHIP MANAGEMENT S/Y</div>
+    <ul>
+        <li><a href="{% url 'dashboard' %}" style="color: aliceblue;"><i class="fa-solid fa-table-columns"></i>Dashboard</a></li>
+        <li><a href="{% url 'add_scholarship' %}" style="color: aliceblue;"><i class="fa-solid fa-award"></i>Scheme</a></li>
+        <li><a href="{% url 'my_applications' %}" style="color: aliceblue;"><i class="fa-solid fa-file-lines"></i>Application</a></li>
+        <li><a href="{% url 'search_scholarship' %}" style="color: aliceblue;"><i class="fa-solid fa-magnifying-glass"></i>Search Scholarship</a></li>
+        <li><a href="{% url 'profile' %}" style="color: aliceblue;"><i class="fa-solid fa-user"></i>Profile</a></li>
+        <li><a href="{% url 'setting' %}" style="color: aliceblue;"><i class="fa-solid fa-gear"></i>Setting</a></li>
+        <li><a href="{% url 'logout' %}" style="color: aliceblue;"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <div class="main" style="max-width:980px;">
+        <h1 class="page-title">Pages</h1>
+        <div class="result-box">
+            <h2 style="margin-bottom:10px;">About Scholarship Management</h2>
+            <p style="opacity:.9; margin-bottom:14px;">
+                This portal helps applicants apply to scholarships and allows staff to review,
+                approve/reject, and update application status.
+            </p>
+
+            <h3 style="margin-top:18px; margin-bottom:8px;">Contact</h3>
+            <table>
+                <tr><th>Address</th><td>890, Sector 62, Gyan Sarovar, Noida (Delhi/NCR)</td></tr>
+                <tr><th>Phone</th><td>+7896541236</td></tr>
+                <tr><th>Email</th><td>info@phpgurukul.com</td></tr>
+            </table>
+
+            <h3 style="margin-top:26px; margin-bottom:10px;">Useful Websites</h3>
+            <ul style="margin:0; padding-left:18px; line-height:1.8;">
+                <li><a href="https://www.ugc.ac.in/" target="_blank" style="color:#fff; text-decoration:underline;">UGC (University Grants Commission)</a></li>
+                <li><a href="https://www.nsp.gov.in/" target="_blank" style="color:#fff; text-decoration:underline;">National Scholarship Portal (NSP)</a></li>
+                <li><a href="https://scholarships.gov.in/" target="_blank" style="color:#fff; text-decoration:underline;">Scholarships.gov.in</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

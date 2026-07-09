@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Scholarship Management System</title>
+
+<!-- Bootstrap loads FIRST -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- Custom CSS loads LAST so it always wins over Bootstrap -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            <h2>SCHOLARSHIP</h2>
+            <span>MANAGEMENT SYSTEM</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="{% url 'home' %}" class="nav-link active">Home</a>
+            <a href="{% url 'pages' %}" class="nav-link">About</a>
+            <a href="{% url 'search_scholarship' %}" class="nav-link">Schemes</a>
+            <a href="{% url 'pages' %}" class="nav-link">Contact</a>
+            <a href="/admin/" class="nav-link">Admin</a>
+
+
+            <a href="{% url 'signup' %}" class="apply-btn" style="color:blue;">Apply Now!</a>
+        </div>
+
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                No Nation Can Prosper In
+                <br>
+                Life Without Education
+            </h1>
+
+            <div class="hero-buttons">
+                <a href="{% url 'dashboard' %}" style="text-decoration:none;">
+                    <button class="btn-blue">
+                        Apply Now
+                    </button>
+                </a>
+
+                <a href="{% url 'search_scholarship' %}" style="text-decoration:none;">
+                    <button class="btn-yellow">
+                        View Schemes
+                    </button>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- Column 1 -->
+            <div>
+                <h2 class="footer-title">
+                    SCHOLARSHIP
+                </h2>
+
+                <p>
+                    Let your talents and achievements shine with a scholarship.
+                </p>
+
+                <div class="social-icons">
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div>
+                <h2 class="footer-title">
+                    Site Links
+                </h2>
+
+                <a href="{% url 'home' %}" class="footer-link">Home</a>
+                <a href="{% url 'pages' %}" class="footer-link">About</a>
+                <a href="{% url 'search_scholarship' %}" class="footer-link">Schemes</a>
+                <a href="{% url 'pages' %}" class="footer-link">Contact Us</a>
+                <a href="/admin/" class="footer-link">Admin</a>
+            </div>
+
+            <!-- Column 3 -->
+            <div>
+                <h2 class="footer-title">
+                    Have a Questions?
+                </h2>
+
+                <p>
+                    890, Sector 62, Gyan Sarovar,
+                    Noida(Delhi/NCR)
+                </p>
+
+                <p>
+                    +7896541236
+                </p>
+
+                <p>
+                    info@phpgurukul.com
+                </p>
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

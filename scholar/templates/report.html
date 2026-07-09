@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo">SCHOLARSHIP MANAGEMENT S/Y</div>
+    <ul>
+        <li><a href="{% url 'dashboard' %}" style="color: aliceblue;"><i class="fa-solid fa-table-columns"></i>Dashboard</a></li>
+        <li><a href="{% url 'applications_admin' %}" style="color: aliceblue;"><i class="fa-solid fa-file-lines"></i>Applications</a></li>
+        <li><a href="{% url 'logout' %}" style="color: aliceblue;"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+    </ul>
+</div>
+<div class="main-content">
+    <div class="main" style="max-width:980px;">
+        <h1 class="page-title">Report</h1>
+        <div class="result-box">
+            <h2>Applications by Status</h2>
+            <table>
+                <tr><th>Status</th><th>Count</th></tr>
+                <tr><td>NEW</td><td>{{ applications_new }}</td></tr>
+                <tr><td>APPROVED</td><td>{{ applications_approved }}</td></tr>
+                <tr><td>REJECTED</td><td>{{ applications_rejected }}</td></tr>
+                <tr><td>WAITING_DISBURSEMENT</td><td>{{ applications_waiting }}</td></tr>
+                <tr><td>DISBURSED</td><td>{{ applications_disbursed }}</td></tr>
+            </table>
+
+            <h3 style="margin-top:22px; margin-bottom:10px;">Summary</h3>
+            <table>
+                <tr><th>Total Schemes</th><td>{{ schemes_total }}</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
